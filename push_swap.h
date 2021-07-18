@@ -4,11 +4,29 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "libft/libft.h"
 
-void	ps_swap(int *a, int *b);
-void	ps_rotate(int *a, int n);
-void	ps_rev_rotate(int *a, int n);
-void	ps_push_to_from(int *a, int *b, int *n_a, int *n_b);
+typedef struct s_list
+{
+	int				index;
+	int				value;
+	struct s_list	*next;
+}	t_list;
+typedef struct s_cur
+{
+	int		mid;
+}	t_cur;
+t_list		*ps_swap(t_list *head);
+t_list		*ps_rotate(t_list *head);
+t_list		*ps_rev_rotate(t_list *head);
+void		ps_push_to_from(t_list **a, t_list **b);
+void		ft_swap(int *a, int *b);
+void		quicksort(int *number, int first, int last);
+static int	minmax(const char *str, int sg);
+static int	help(const char *str, int i);
+int			ft_atoi(const char *str);
+int			ft_strncmp(const char *s1, const char *s2, size_t n);
+t_list		*ft_lstnew(int value);
+int			if_sorted(t_list *head);
+int			mid_search(t_list *a, int n);
 
 #endif
