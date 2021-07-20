@@ -22,7 +22,7 @@ void	quicksort(int *number, int first, int last)
 		i = first;
 		j = last;
 		while (i < j)
-		{
+		{	
 			while (number[i] <= number[pivot] && i < last)
 				i++;
 			while (number[j] > number[pivot])
@@ -47,4 +47,18 @@ int	if_sorted(t_list *head)
 		head = head->next;
 	}
 	return (1);
+}
+
+
+int	elem_count(t_list *head)
+{
+	int	i;
+
+	i = 0;
+	while (head)
+	{
+		i++;
+		head = head->next;
+	}
+	return (i);
 }

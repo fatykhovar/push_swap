@@ -14,11 +14,12 @@ typedef struct s_list
 typedef struct s_cur
 {
 	int		mid;
+	int		mid_count;
 }	t_cur;
-t_list		*ps_swap(t_list *head);
-t_list		*ps_rotate(t_list *head);
-t_list		*ps_rev_rotate(t_list *head);
-void		ps_push_to_from(t_list **a, t_list **b);
+t_list		*ps_swap(t_list *head, char c);
+t_list		*ps_rotate(t_list *head, char c);
+t_list		*ps_rev_rotate(t_list *head, char c);
+void		ps_push_to_from(t_list **a, t_list **b, char c);
 void		ft_swap(int *a, int *b);
 void		quicksort(int *number, int first, int last);
 static int	minmax(const char *str, int sg);
@@ -27,6 +28,7 @@ int			ft_atoi(const char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 t_list		*ft_lstnew(int value);
 int			if_sorted(t_list *head);
-int			mid_search(t_list *a, int n);
+void		mid_search(t_cur **cur, t_list *a);
+int			elem_count(t_list *head);
 
 #endif
