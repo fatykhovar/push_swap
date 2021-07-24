@@ -7,11 +7,9 @@ static int	minmax(const char *str, int sg)
 	i = 0;
 	while (str[i] >= '0' && str[i] <= '9')
 		i++;
-	if (i > 9 && (ft_strncmp(str, "2147483648", 10) > 0 && sg == -1))
-		return (0);
-	if (i > 9 && (ft_strncmp(str, "2147483647", 10) > 0 && sg == 1))
-		return (-1);
-	return (1);
+	if (i > 9 && ft_strncmp(str, "2147483648", 10) > 0)
+		return (1);
+	return (0);
 }
 
 static int	help(const char *str, int i)
@@ -27,30 +25,33 @@ static int	help(const char *str, int i)
 	return (res);
 }
 
+void	error_exit(void)
+{
+	write(1, "Error\n", 6);
+	exit(0);
+}
+
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	res;
+	int	j;
 	int	sg;
 
 	i = 0;
-	res = 0;
 	sg = 1;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v'
-		|| str[i] == '\f' ||str[i] == '\r' || str[i] == ' ')
-		i++;
-	if (str[i] == '+')
-		i++;
-	else
+	if (str[0] == '-')
 	{
-		if (str[i] == '-')
-		{
-			sg = -1;
-			i++;
-		}
+		sg = -1;
+		i++;
 	}
-	if (minmax((char *)(str + i), sg) != 1)
-		return (minmax((char *)(str + i), sg));
-	res = help(str, i);
-	return (sg * res);
+	j = i;
+	while (str[j])
+	{
+		if (str[j] < '0' || str[j] > '9')
+			error_exit();
+		j++;
+	}
+	if (minmax((char *)(str + i), sg) == 1)
+		error_exit();
+	return (sg * help(str, i));
 }

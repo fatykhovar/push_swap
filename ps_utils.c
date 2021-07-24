@@ -30,9 +30,7 @@ void	quicksort(int *number, int first, int last)
 			if (i < j)
 				ft_swap(&number[i], &number[j]);
 		}
-		temp = number[pivot];
-		number[pivot] = number[j];
-		number[j] = temp;
+		ft_swap(&number[pivot], &number[j]);
 		quicksort(number, first, j - 1);
 		quicksort(number, j + 1, last);
 	}
@@ -40,7 +38,7 @@ void	quicksort(int *number, int first, int last)
 
 int	if_sorted(t_list *head)
 {
-	while (head)
+	while (head->next)
 	{
 		if (head->index > head->next->index)
 			return (0);
@@ -48,7 +46,6 @@ int	if_sorted(t_list *head)
 	}
 	return (1);
 }
-
 
 int	elem_count(t_list *head)
 {
@@ -61,4 +58,22 @@ int	elem_count(t_list *head)
 		head = head->next;
 	}
 	return (i);
+}
+
+int	duplicates(t_list *head)
+{
+	t_list	*t;
+
+	while (head)
+	{
+		t = head->next;
+		while (t)
+		{
+			if (head->value == t->value)
+				return (1);
+			t = t->next;
+		}
+		head = head->next;
+	}
+	return (0);
 }
