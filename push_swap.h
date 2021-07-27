@@ -9,6 +9,8 @@ typedef struct s_list
 {
 	int				index;
 	int				value;
+	int				chunk_nb;
+	int				chunk_count;
 	struct s_list	*next;
 }	t_list;
 typedef struct s_cur
@@ -29,7 +31,7 @@ int			ft_atoi(const char *str);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 t_list		*ft_lstnew(int value);
 int			if_sorted(t_list *head);
-void		mid_search(t_cur **cur, t_list *a);
+void		mid_search(t_cur **cur, t_list *a, int sz);
 int			elem_count(t_list *head);
 int			duplicates(t_list *head);
 void		error_exit(void);
