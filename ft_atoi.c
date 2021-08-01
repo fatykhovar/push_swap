@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-static int	minmax(const char *str, int sg)
+int	minmax(const char *str)
 {
 	int	i;
 
@@ -12,7 +12,7 @@ static int	minmax(const char *str, int sg)
 	return (0);
 }
 
-static int	help(const char *str, int i)
+int	help(const char *str, int i)
 {
 	int	res;
 
@@ -51,7 +51,7 @@ int	ft_atoi(const char *str)
 			error_exit();
 		j++;
 	}
-	if (minmax((char *)(str + i), sg) == 1)
+	if (minmax((char *)(str + i)) == 1)
 		error_exit();
 	return (sg * help(str, i));
 }

@@ -14,7 +14,6 @@ void	quicksort(int *number, int first, int last)
 	int	i;
 	int	j;
 	int	pivot;
-	int	temp;
 
 	if (first < last)
 	{
